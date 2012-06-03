@@ -17,7 +17,7 @@ LIBS    =
 
 .PHONY: all clean
 
-all: ${TARGET} run
+all: ${TARGET}
 
 ${TARGET}: ${OBJS} 
 	${CC} ${LDFLAGS} -o $@ $^ ${LIBS} 
@@ -25,8 +25,6 @@ ${TARGET}: ${OBJS}
 ${OBJS}: %.o: %.c
 	${CC} ${CCFLAGS} -o $@ -c $< 
 
-run: ${TARGET}
-	./${TARGET}
 clean: 
 	-rm -f *~ *.o ${TARGET} 
 
