@@ -6,10 +6,40 @@
  * @author <a href="mailto:jerry@jerry-ThinkPad-SL300">Jerry Xu</a>
  */
 import java.util.ArrayList;
+import java.util.Date;
 
-Test {
+public class Test {
     public static void main(String[] args) {
         ArrayList a = new ArrayList();
-        ArrayList.
+        Test t = new Test();
+    }
+
+    public void testIt() {
+        System.out.println();
+        for (int i = 0; i < N; ++i) {
+            
+        }default:
+	default
+            case :
+            while (condition) {
+                while (while) {
+                    
+                }
+            }
+
+
+        if () {
+            
+        }
+        if (condition) {
+            
+        } else {
+            else if () {
+                
+            }
+        }
+        for (; ; ) {
+            
+        }
     }
 }
