@@ -18,28 +18,11 @@ public class Test {
         System.out.println();
         for (int i = 0; i < N; ++i) {
             
-        }default:
-	default
-            case :
-            while (condition) {
-                while (while) {
+        }
+        while (condition) {
+            while (while) {
                     
-                }
             }
-
-
-        if () {
-            
-        }
-        if (condition) {
-            
-        } else {
-            else if () {
-                
-            }
-        }
-        for (; ; ) {
-            
-        }
+        }       
     }
 }

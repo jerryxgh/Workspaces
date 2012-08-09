@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
             ++cw;
         }
     }
-
+    
     printf ("character number: %d\nline number: %d\nword number %d\n", cc, cl, cw);
 
     Stack S;
