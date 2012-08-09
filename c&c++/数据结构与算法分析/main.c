@@ -2,6 +2,7 @@
  */
 
 #include <stdio.h>
+#include "stackar.h"
 
 #define IN 0
 #define OUT 1
@@ -25,5 +26,7 @@ int main(int argc, char *argv[]) {
 
     printf ("character number: %d\nline number: %d\nword number %d\n", cc, cl, cw);
 
+    Stack S;
+    IsEmpty(S);
     return 0;
 }
