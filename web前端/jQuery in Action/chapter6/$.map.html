@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>$.map() Example</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      var strings = ['1','2','3','4','S','6'];
+
+      var values = $.map(strings,function(value){
+        var result = new Number(value);
+        return isNaN(result) ? null : result;
+      });
+
+      var values = ['this','that','other thing'];
+
+      $.map(values,function(value){
+        return value.split('');
+      })
+    </script>
+  </head>
+
+  <body>
+  </body>
+</html>

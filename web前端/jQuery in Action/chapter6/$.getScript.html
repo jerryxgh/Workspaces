@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>$.getScript Example</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#loadButton').click(function(){
+          $.getScript(
+            'new.stuff.js'//,function(){$('#inspectButton').click()}
+          );
+        });
+        $('#inspectButton').click(function(){
+          someFunction(someVariable);
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <button type="button" id="loadButton">Load</button>
+    <button type="button" id="inspectButton">Inspect</button>
+  </body>
+</html>

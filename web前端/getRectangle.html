@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>getRectangle</title>
+        <meta name="author" content="Jerry Xu" />
+        <script type="text/javascript">
+          function getRectangle(pa, pb, m) {
+              var rectangle = new Array(), dx = pb.x - pa.x, dy = pb.y - pa.y, z = Math.sqrt(dx * dx + dy * dy);
+              alert("dx: " + dx);
+              alert("dy: " + dy);
+              alert("z: " + z);
+              
+              return rectangle;
+          }
+          alert(getRectangle({x: 1, y:2}, {x: 3, y:4}));
+          
+        </script>
+    </head>
+
+    <body>
+        <h1>getRectangle</h1>
+        <hr />
+    </body>
+</html>

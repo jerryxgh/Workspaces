@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>$.grep Test</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      var testData = [];
+      var pattern = /^\d{5}(-\d{4})?$/;
+
+      var originalArray = ['01826','abcde','1','78701-0339'];
+
+      var badZips = $.grep(
+                      originalArray,
+                      function(value) {
+                         return value.match(/^\d{5}(-\d{4})?$/) != null;
+                       },
+                       true);
+
+    </script>
+  </head>
+
+  <body>
+  </body>
+</html>

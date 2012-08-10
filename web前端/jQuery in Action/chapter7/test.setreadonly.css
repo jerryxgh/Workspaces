@@ -1,0 +1,27 @@
+h2 {
+  font-size: 1.4em;
+}
+
+label {
+  float: left;
+  text-align: right;
+  font-weight: bold;
+  width: 120px;
+  margin-right: 6px;
+}
+
+#shipAddress,#billAddress {
+  width: 256px;
+}
+
+#shipCity,#billCity {
+  width: 120px;
+}
+
+#shipState,#billState {
+  width: 40px;
+}
+
+#shipZip,#billZip {
+  width: 80px;
+}

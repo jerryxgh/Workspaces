@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Serialization Example</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript"
+            src="../scripts/support.labs.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#testForm').bind('submit',function(){return false;});
+        $('#serializeButton').click(function(){
+          $('#results').html( $('input,select,textarea').serialize() );
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>The Form</legend>
+      <form action="" id="testForm">
+        <div>
+          <label>A text field:</label>
+          <input type="text" name="aTextField"/>
+        </div>
+        <div>
+          <label>A disabled text field:</label>
+          <input type="text" name="aDisabledField" disabled="disabled"/>
+        </div>
+        <div>
+          <label>A password field:</label>
+          <input type="password" name="aPasswordField"/>
+        </div>
+        <div>
+          <label>Some checkboxes:</label>
+          <input type="checkbox" name="someCheckboxes" value="checkbox1"/> One
+          <input type="checkbox" name="someCheckboxes" value="checkbox2"/> Two
+          <input type="checkbox" name="someCheckboxes" value="checkbox3"/> Three
+        </div>
+        <div>
+          <label>Some radio buttons:</label>
+          <input type="radio" name="someRadios" value="radioA" checked="checked"/> A
+          <input type="radio" name="someRadios" value="radioB"/> B
+          <input type="radio" name="someRadios" value="radioC"/> C
+        </div>
+        <div>
+          <label>A text area:</label>
+          <textarea name="aTextArea"></textarea>
+        </div>
+        <div>
+          <label>A select list:</label>
+          <select name="aSelectList" multiple="multiple" size="4">
+            <option value="optionAlpha">alpha</option>
+            <option value="optionBeta">beta</option>
+            <option value="optionGamma">gamma</option>
+            <option value="optionDelta">delta</option>
+          </select>
+        </div>
+        <input type="button" id="serializeButton" value="Serialize me!"/>
+      </form>
+    </fieldset>
+
+    <fieldset>
+      <legend>The Result</legend>
+      <div id="results"></div>
+    </fieldset>
+  </body>
+</html>

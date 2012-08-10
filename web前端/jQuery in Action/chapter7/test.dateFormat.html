@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>$.dateFormat() test</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript" src="jquery.jqia.dateFormat.js"></script>
+    <script type="text/javascript">
+      var testPatterns = [
+        'yyyy','yy','MMMM','MMM','MM','M','dd','d','EEEE','EEE','a',
+        'HH','H','hh','h','mm','m','ss','s','S',
+        'EEEE MMMM, d yyyy hh:mm:ss.S a',
+        'M/d/yy HH:mm'
+      ];
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <script>
+        var now = new Date();
+        document.write('<div>Test date: '+now+'</div>');
+        $.each(testPatterns,function(){
+          document.write('<div>'+this+'='+$.formatDate(now,this)+'</div>');
+        });
+      </script>
+    </div>
+
+  </body>
+</html>

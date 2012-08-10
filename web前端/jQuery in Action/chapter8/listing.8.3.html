@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Listing 8.3</title>
+    <script type="text/javascript">
+      window.onload = function() {
+        var xhr;
+
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+        }
+        else if (window.ActiveXObject) {
+          xhr = new ActiveXObject("Msxml2.XMLHTTP");
+        }
+        else {
+          throw new Error("Ajax is not supported by this browser");
+        }
+
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              document.getElementById('someContainer')
+                .innerHTML = xhr.responseText;
+            }
+          }
+        }
+
+        xhr.open('GET','/serverResource');
+        xhr.send('');
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="someContainer"></div>
+  </body>
+</html>

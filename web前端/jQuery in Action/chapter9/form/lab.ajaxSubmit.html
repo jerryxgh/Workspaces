@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>ajaxSubmit Laboratory</title>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript"
+            src="../../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript"
+            src="../../scripts/support.labs.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery.form.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#testButton').click(function(){
+          var options = {
+            target: '#responseDisplay',
+            beforeSubmit: function(data,set,options) {
+              $('#dataDisplay').html($.toSource(data));
+              options.beforeSubmit = undefined;
+              $('#optionsDisplay').html($.toSource($.extend({},options),true));
+              return true;
+            }
+          };
+          if ($('#semanticControl').fieldValue().length != 0) options.semantic = true;
+          var disposition = $('#dispositionGroup input:radio').fieldValue()[0];
+          if (disposition != '') options[disposition] = true;
+          $('#testForm').ajaxSubmit(options);
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>ajaxSubmit Laboratory</h1>
+    <fieldset>
+      <legend>The form</legend>
+      <div>
+        <form id="testForm" action="reflectData.jsp" onsubmit="return false;">
+          <div>
+            <label>Text field:</label>
+            <input type="text" name="text" value="some text"/>
+          </div>
+
+           <div>
+            <label>Dropdown:</label>
+            <select name="dropdown">
+              <option value="dropdown 1">One</option>
+              <option value="dropdown 2">Two</option>
+              <option value="dropdown 3" selected="selected">Three</option>
+              <option value="dropdown 4">Four</option>
+              <option value="dropdown 5">Five</option>
+            </select>
+          </div>
+
+          <!--div>
+            <label>Input image:</label>
+            <input type="image" name="inputImage" src="image.1.jpg" value="hibiscus blossom"/>
+          </div-->
+
+          <div>
+            <label>Check box group:</label>
+            <input type="checkbox" name="cb" value="checkbox 1">One
+            <input type="checkbox" name="cb" value="checkbox 2" checked="checked">Two
+            <input type="checkbox" name="cb" value="checkbox 3">Three
+          </div>
+
+          <div>
+            <label>Radio group:</label>
+            <input type="radio" name="radio" value="radio 1">One
+            <input type="radio" name="radio" value="radio 2" checked="checked">Two
+            <input type="radio" name="radio" value="radio 3">Three
+          </div>
+          <div>
+            <label>Text area:</label>
+            <textarea name="textarea" rows="2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</textarea>
+          </div>
+
+        </form>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Control Panel</legend>
+      <div>
+        <form action="" onsubmit="return false;">
+
+          <!--div>
+            <label>Semantic order:</label>
+            <input type="checkbox" name="semantic" id="semanticControl"/> Check for yes
+          </div-->
+
+          <div id="dispositionGroup">
+            <label>After submission:</label>
+            <input type="radio" name="disposition" value="" checked="checked"/> Leave form be
+            <input type="radio" name="disposition" value="resetForm"/> Reset form
+            <input type="radio" name="disposition" value="clearForm"/> Clear form
+          </div>
+
+          <div>
+            <button type="button" id="testButton">Test</button>
+          </div>
+        </form>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Results</legend>
+      <div id="console">
+        <div>
+          <label>Submitted data:</label>
+          <div id="dataDisplay"></div>
+        </div>
+        <div>
+          <label>Options:</label>
+          <div id="optionsDisplay"></div>
+        </div>
+        <div>
+          <label>Response:</label>
+          <div id="responseDisplay"></div>
+        </div>
+      </div>
+    </fieldset>
+  </body>
+</html>

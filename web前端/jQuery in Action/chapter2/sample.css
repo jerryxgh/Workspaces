@@ -1,0 +1,21 @@
+body,th,td {
+  font-size: 8pt;
+  background-color: white;
+}
+
+.redBorder, .wrappedElement {
+  border: solid red 1px;
+}
+
+.thickBorder {
+  border-width: 3px;
+}
+
+.seeThrough {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+table {
+  background-color: black;
+}

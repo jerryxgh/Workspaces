@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>$.extend() Example</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript"
+            src="../scripts/support.labs.js"></script>
+    <script type="text/javascript">
+      var target =  { a: 1, b: 2, c: 3 };
+      var source1 = { c: 4, d: 5, e: 6 };
+      var source2 = { e: 7, f: 8, g: 9 };
+
+      $(function(){
+        $('#targetBeforeDisplay').html($.toSource(target));
+        $('#source1Display').html($.toSource(source1));
+        $('#source2Display').html($.toSource(source2));
+        $.extend(target,source1,source2);
+        $('#targetAfterDisplay').html($.toSource(target));
+      });
+    </script>
+    <style>
+      label { float: left; width: 108px; text-align: right; }
+      p { clear: both; }
+      label + span { margin-left: 6px; }
+      fieldset { width: 360px }
+    </style>
+  </head>
+
+  <body>
+    <h1>$.extend() Example</h1>
+    <fieldset>
+      <legend>$.extend() Example</legend>
+      <p>
+        <label>target (before) =</label>
+        <span id="targetBeforeDisplay"></span>
+      </p>
+      <p>
+        <label>source1 =</label>
+        <span id="source1Display"></span>
+      </p>
+      <p>
+        <label>source2 =</label>
+        <span id="source2Display"></span>
+      </p>
+      <p>
+        <label>target (after) =</label>
+        <span id="targetAfterDisplay"></span>
+      </p>
+    </fieldset>
+  </body>
+</html>

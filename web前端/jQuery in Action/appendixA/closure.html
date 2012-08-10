@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Closure Example</title>
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script>
+      $(function(){
+        var local = 1;
+        window.setInterval(function(){
+          $('#display')
+            .append('<div>At '+new Date()+' local='+local+'</div>');
+          local++;
+        },3000);
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="display"></div>
+  </body>
+</html>

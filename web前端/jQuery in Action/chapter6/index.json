@@ -1,0 +1,7 @@
+[
+  {url:'ready.handler.test.1.html',caption:'Ready handler test 1'},
+  {url:'ready.handler.test.2.html',caption:'Ready handler test 2'},
+  {url:'$.browser.html',caption:'$.browser() Example'},
+  {url:'$.extend.html',caption:'$.extend() Example'},
+  {url:'$.getScript.html',caption:'$.getScript() Example'}
+]

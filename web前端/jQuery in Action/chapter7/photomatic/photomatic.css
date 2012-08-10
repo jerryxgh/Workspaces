@@ -1,0 +1,20 @@
+h1 {
+  text-align: center;
+}
+#thumbnails {
+  float: left;
+  width: 175px;
+  height: 422px;
+  overflow: auto;
+  border: 2px ridge #00457b;
+  margin-right: 10px;
+}
+
+#buttonBar {
+  clear: both;
+  text-align: center;
+}
+
+#buttonBar button {
+  width: 88px;
+}

@@ -1,0 +1,30 @@
+fieldset {
+  width: 640px;
+}
+
+label {
+  float: left;
+  font-weight: bold;
+  width: 11em;
+  text-align: right;
+  margin-right: 0.5em;
+}
+
+textarea {
+  width: 360px;
+}
+
+#console {
+  padding: 4px;
+  width: 600px;
+  overflow: auto;
+}
+
+#console label {
+  float: none;
+}
+
+#responseDisplay {
+  margin-left: 2em;
+  font-size: 0.8em;
+}

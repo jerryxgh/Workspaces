@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>$.browser Example</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#testButton').click(function(event){
+          var select = $('#testSubject')[0];
+          select.add(
+            new Option('Two and \u00BD','2.5'),
+            $.browser.msie ? 2 : select.options[2]
+          );
+        });
+      });
+    </script>
+  </head>
+
+  <body class="plain">
+    <select id="testSubject" multiple="multiple" size="5">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+      <option value="4">Four</option>
+    </select>
+    <div>
+      <button type="button" id="testButton">Click me!</button>
+    </div>
+  </body>
+</html>

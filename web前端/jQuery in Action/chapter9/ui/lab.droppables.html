@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>UI Droppables Lab</title>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <script type="text/javascript" src="../../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript" src="../../scripts/support.labs.js"></script>
+    <script type="text/javascript" src="../../scripts/ui.mouse.js"></script>
+    <script type="text/javascript" src="../../scripts/ui.draggable.js"></script>
+    <script type="text/javascript" src="../../scripts/ui.draggable.ext.js"></script>
+    <script type="text/javascript" src="../../scripts/ui.droppable.js"></script>
+    <script type="text/javascript" src="../../scripts/ui.droppable.ext.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#labForm').submit(function(){ return false; } );
+        $('#testDraggables img').draggable({
+          ghosting: true,
+          opacity: 0.5,
+          revert: true
+        });
+        $('#applyButton').click(function(){
+          $('#dropZone').droppableDestroy();
+          var options = {};
+          //
+          // boolean options
+          //
+          $('.booleanOption:checked').each(function(){
+            if ($(this).val()!='') options[this.name] = $(this).val() == 'true';
+          });
+          //
+          // radio options
+          //
+          $('.radioOption:checked').each(function(){
+            if ($(this).val()!='') options[this.name] = $(this).val();
+          });
+          //
+          // value options
+          //
+          $('.valueOption').each(function(){
+            if ($(this).val()!='') options[this.name] = $(this).val();
+          });
+          //
+          // special cases
+          //
+          options.accept = $('[name=accept]:checked').map(function(){return '.'+$(this).val();}).get().join(',');
+          //
+          // Display
+          //
+          $('#commandDisplay').html("$('#dropZone').droppable("+$.toSource(options)+");");
+          //
+          // Callbacks
+          //
+          options.activate = function(){throb('div.activate');};
+          options.deactivate = function(){throb('div.deactivate');};
+          options.over = function(){throb('div.over');};
+          options.out = function(){throb('div.out');};
+          options.drop = function(event,info){
+            throb('div.drop');
+            this.src = info.element.src;
+          };
+          //
+          // Apply
+          //
+          $('#dropZone').droppable(options);
+        });
+        $('#disableButton').click(function(){
+          $('#dropZone').droppableDisable();
+          $('#commandDisplay').html("$('#dropZone').droppableDisable();");
+        });
+        $('#enableButton').click(function(){
+          $('#dropZone').droppableEnable();
+          $('#commandDisplay').html("$('#dropZone').droppableEnable();");
+        });
+        $('#labForm').bind('reset',function(){ $('#dropZone').dropableDestroy(); });
+      });
+
+      function throb(element) {
+        $(element).animate({opacity:1.0},250,function(){$(this).animate({opacity:0.5},1000);});
+      }
+    </script>
+    <style>
+      fieldset {
+        width: 640px;
+      }
+      #buttonBar {
+        clear: both;
+      }
+      label {
+        float: left;
+        text-align: right;
+        width: 100px;
+        font-weight: bold;
+        margin-right: 6px;
+      }
+      h2 {
+        margin-bottom: 3px;
+      }
+      #console div {
+        clear: both;
+      }
+      #console label {
+        width: 120px;
+      }
+      #testSubjectContainer {
+        height: 300px;
+      }
+      #testDraggables {
+        float: left;
+        width: 480px;
+        padding-right: 0px;
+      }
+      #testDraggables img {
+        margin: 1px;
+        border: 1px solid black;
+      }
+      #testDroppables .redBorder {
+        border-color: red;
+      }
+      #testDroppables .blueBorder {
+        border-color: blue;
+      }
+      #testDroppables .greenBorder {
+        border-color: green;
+      }
+      img {
+        border: 3px black solid;
+      }
+      #optionsContainer div {
+        clear: both;
+      }
+      #throbbables div {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        font-weight: bolder;
+      }
+      #throbbables {
+        text-align: center;
+        padding-right: 32px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>UI Droppables Lab</h1>
+
+    <fieldset>
+      <legend>Control Panel</legend>
+      <form action="" id="labForm">
+        <h2>Draggable options</h2>
+        <div id="optionsContainer">
+          <div>
+            <label>accept:</label>
+            <input type="checkbox" name="accept" value="flower" checked="checked">flower
+            <input type="checkbox" name="accept" value="dog" checked="checked">dog
+            <input type="checkbox" name="accept" value="motorcycle" checked="checked">motorcycle
+            <input type="checkbox" name="accept" value="water" checked="checked">water
+          </div>
+          <div>
+            <label>activeClass:</label>
+            <input type="radio" name="activeClass" value="" checked="checked" class="radioOption">none
+            <input type="radio" name="activeClass" value="redBorder" class="radioOption">redBorder
+            <input type="radio" name="activeClass" value="blueBorder" class="radioOption">blueBorder
+            <input type="radio" name="activeClass" value="greenBorder" class="radioOption">greenBorder
+          </div>
+          <div>
+            <label>hoverClass:</label>
+            <input type="radio" name="hoverClass" value="" checked="checked" class="radioOption">none
+            <input type="radio" name="hoverClass" value="redBorder" class="radioOption">redBorder
+            <input type="radio" name="hoverClass" value="blueBorder" class="radioOption">blueBorder
+            <input type="radio" name="hoverClass" value="greenBorder" class="radioOption">greenBorder
+          </div>
+          <div>
+            <label>tolerance:</label>
+            <input type="radio" name="tolerance" value="" checked="checked" class="radioOption">none
+            <input type="radio" name="tolerance" value="intersect" class="radioOption">intersect
+            <input type="radio" name="tolerance" value="pointer" class="radioOption">pointer
+            <input type="radio" name="tolerance" value="fit" class="radioOption">fit
+            <input type="radio" name="tolerance" value="touch" class="radioOption">touch
+          </div>
+        </div>
+        <div id="buttonBar">
+          <button type="button" id="applyButton">Apply</button>
+          <button type="button" id="disableButton">Disable</button>
+          <button type="button" id="enableButton">Enable</button>
+          <button type="reset" id="resetButton">Reset</button>
+        </div>
+      </form>
+      <div>
+        <h2>Executed command:</h2>
+        <div id="commandDisplay">---</div>
+      </div>
+    </fieldset>
+
+    <fieldset id="testSubjectContainer">
+      <legend>Test Subjects</legend>
+      <div id="testDraggables">
+        <img src="images/dog.flowers.jpg" alt="dog and flowers" class="dog flower"/>
+        <img src="images/dog.jpg" alt="dog" class="dog"/>
+        <img src="images/flower.jpg" alt="flower" class="flower"/>
+        <img src="images/motorcycle.jpg" alt="motorcycle" class="motorcycle"/>
+        <img src="images/river.jpg" alt="motorcycle and river" class="motorcycle water"/>
+        <img src="images/waterfall.jpg" alt="waterfall" class="water"/>
+      </div>
+      <div id="testDroppables" class="droppableContainer">
+        <img src="images/dropzone.jpg" alt="drop zone" id="dropZone"/>
+      </div>
+      <div id="throbbables">
+        <div class="activate">ACTIVATE</div>
+        <div class="over">OVER</div>
+        <div class="out">OUT</div>
+        <div class="drop">DROP</div>
+        <div class="deactivate">DEACTIVATE</div>
+      </div>
+    </fieldset>
+
+  </body>
+</html>

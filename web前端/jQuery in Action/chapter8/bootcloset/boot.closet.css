@@ -1,0 +1,91 @@
+body {
+  font-family: sans-serif;
+  background-image: url("boot.closet.backg.png");
+  background-repeat: repeat-y;
+  background-color: #817d7e;
+  margin: 0;
+  padding: 0 0 0 188px;
+  font-size: 9pt;
+  color: white;
+}
+
+#banner {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  z-index: 0;
+}
+
+#detailFormContainer {
+  z-index: 1;
+  position: absolute;
+  top: 14px;
+  left: 188px;
+  border: 4px ridge #FFB85D;
+  background-color: #515152;
+  padding: 2px 32px 12px 32px;
+  width: 512px;
+}
+
+h1 {
+  font-size: 1.6em;
+  color: #FFB85D;
+}
+
+#cascadingDropdowns div {
+  float: left;
+  margin-right: 10px;
+}
+
+#colorDropdown,#sizeDropdown {
+  width: 122px;
+}
+
+label {
+  color: #FFB85D;
+  font-weight: bold;
+}
+
+#cascadingDropdowns label {
+  float: left;
+  margin-right: 10px;
+}
+
+#bootCloset1 #detailsDisplay {
+  margin-top: 16px;
+}
+
+#bootCloset2 #detailsDisplay,#bootCloset3 #detailsDisplay{
+  margin-top: 60px;
+}
+#detailsDisplay label {
+  float: left;
+  width: 88px;
+  text-align: right;
+  margin-right: 8px;
+}
+
+#detailsDisplay div {
+  padding-bottom: 10px;
+  clear: both;
+  line-height: 150%
+}
+
+#bootCloset3 abbr {
+  color: aqua;
+  cursor: pointer;
+  border-bottom: 1px aqua dotted;
+}
+
+.lookerUpperFlyout {
+  width: 240px;
+  padding: 4px 8px;
+  border: 2px ridge maroon;
+  background-color: #ffffcc;
+  z-index: 10;
+  color: black;
+}
+
+#item_features {
+  line-height: 140%;
+}

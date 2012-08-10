@@ -1,0 +1,5 @@
+[
+  {url:'test.dateFormat.html',caption:'Test $.dateFormat()'},
+  {url:'test.setreadonly.html',caption:'Test setReadOnly()'},
+  {url:'photomatic/photomatic.html',caption:'Test the Photomatic'}
+]

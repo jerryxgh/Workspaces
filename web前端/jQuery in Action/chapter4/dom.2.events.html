@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>DOM Level 2 Events Example</title>
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js">
+    </script>
+    <script type="text/javascript">
+      $(function(){
+        var element = $('#vstar')[0];
+        element.addEventListener('click',function(event) {
+          say('Whee once!');
+        },false);
+        element.addEventListener('click',function(event) {
+          say('Whee twice!');
+        },false);
+        element.addEventListener('click',function(event) {
+          say('Whee three times!');
+        },false);
+      });
+
+      function say(text) {
+        $('#console').append('<div>'+text+'</div>');
+      }
+    </script>
+  </head>
+
+  <body>
+    <img id="vstar" src="vstar.jpg"/>
+    <div id="console"></div>
+  </body>
+</html>

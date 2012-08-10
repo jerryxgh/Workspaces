@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Collapsible List &mdash; Take 3</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('li:has(ul)')
+          .click(function(event){
+            if (this == event.target) {
+              $(this).css('list-style-image',
+                (!$(this).children().is(':hidden')) ?
+                  'url(plus.gif)' : 'url(minus.gif)');
+              $(this).children().toggle('slow');
+            }
+            return false;
+          })
+          .css({cursor:'pointer',
+                'list-style-image':'url(plus.gif)'})
+          .children().hide();
+        $('li:not(:has(ul))').css({
+          cursor: 'default',
+          'list-style-image':'none'
+        });
+      });
+    </script>
+    <style>
+      fieldset { width: 320px }
+    </style>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>Collapsible List &mdash; Take 3</legend>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>
+          Item 3
+          <ul>
+            <li>Item 3.1</li>
+            <li>
+              Item 3.2
+              <ul>
+                <li>Item 3.2.1</li>
+                <li>Item 3.2.2</li>
+                <li>Item 3.2.3</li>
+              </ul>
+            </li>
+            <li>Item 3.3</li>
+          </ul>
+        </li>
+        <li>
+          Item 4
+          <ul>
+            <li>Item 4.1</li>
+            <li>
+              Item 4.2
+              <ul>
+                <li>Item 4.2.1</li>
+                <li>Item 4.2.2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Item 5</li>
+      </ul>
+    </fieldset>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Live Query Lab</title>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <script type="text/javascript" src="../../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery.livequery.js"></script>
+    <script type="text/javascript">
+      var count = 1;
+      $(function(){
+        $('div.testSubject').livequery('click',
+          function(){
+            $(this).toggleClass('matched');
+          }
+        );
+        $('div.matched').livequery(
+          function(){ reportMatch(this,true); },
+          function(){ reportMatch(this,false); }
+        );
+        $('#addButton').click(function(){
+          count++;
+          $('<div id="testSubject'+count+'" class="testSubject">Test Subject '+count+'</div>').appendTo('#testSubjects');
+          $('#console').append(
+            '<div>Element DIV#testSubject'+count+' has been added.</div>'
+          );
+
+        });
+        $('#expireEventButton').click(function(){
+          $('div.testSubject').expire();
+        });
+        $('#expireMatchButton').click(function(){
+          $('div.matched').expire();
+        });
+      });
+
+      function reportMatch(element,matched) {
+        $('#console').append(
+          '<div>Element '+element.tagName+'#'+element.id+' has become '+(matched?'matched':'mismatched')+'</div>'
+        );
+      }
+    </script>
+    <style>
+      fieldset {
+        width: 360px;
+      }
+      .testSubject {
+        border: 2px solid black;
+        background-color: white;
+        padding: 8px;
+      }
+      .matched {
+        border: 4px solid maroon;
+        background-color: khaki;
+      }
+      button {
+        width: 200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>The Live Query Lab</h1>
+    <fieldset>
+      <legend>Control Panel</legend>
+      <div>
+        <button type="button" id="addButton">Add new test subject</button><br/>
+        <button type="button" id="expireMatchButton">Expire match handlers</button>
+        <button type="button" id="expireEventButton">Expire event handler</button><br/>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Test Subjects</legend>
+      <div id="testSubjects">
+        <div class="testSubject" id="testSubject1">Test Subject 1</div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Console</legend>
+      <div id="console"></div>
+    </fieldset>
+  </body>
+</html>

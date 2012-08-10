@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>jQuery in Action Code Examples Launch Page</title>
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <script type="text/javascript" src="scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('li').click(function(event){
+          if (event.target.tagName!='LI') return true;
+          var oldBlocks = $('.chapterBlock').slideUp('normal',function(){oldBlocks.remove()});
+          var target = this;
+          var folder = this.id;
+          $.getJSON(folder+'/index.json',function(info) {
+            var block = $('<div></div>');
+            for (var n=0;n<info.length;n++) {
+              block.append('<div><a href="'+folder+'/'+info[n].url+'" target="_blank">'+info[n].caption+'</a></div>');
+            }
+            block
+              .css('display','none')
+              .addClass('chapterBlock')
+              .appendTo(target)
+              .slideDown();
+          })
+        });
+      });
+    </script>
+    <style>
+      body {
+        background-image: url(backg.jpg);
+        background-repeat: repeat-x;
+      }
+      fieldset {
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+      div#container {
+        position: relative;
+        background-image: url(backg.jpg);
+        background-repeat: repeat-x;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 520px;
+        border: 2px solid #3db8d3;
+        border-right-color: #2f8ea3;
+        border-bottom-color: #2f8ea3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <img id="banner" src="banner.jpg" alt="jQuery in Action Code Examples Launch Page"/>
+
+      <fieldset id="exampleIndex">
+        <legend>Code examples by chapter</legend>
+        <div>
+          <ul>
+            <li id="chapter1">Chapter 1</li>
+            <li id="chapter2">Chapter 2</li>
+            <li id="chapter3">Chapter 3</li>
+            <li id="chapter4">Chapter 4</li>
+            <li id="chapter5">Chapter 5</li>
+            <li id="chapter6">Chapter 6</li>
+            <li id="chapter7">Chapter 7</li>
+            <li id="chapter8">Chapter 8</li>
+            <li id="chapter9">Chapter 9</li>
+            <li id="appendixA">Appendix A</li>
+          </ul>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Server setup tests</legend>
+        <div>
+          <p>
+            <a href="chapter8/test.jsp">Test JSP installation</a>
+          </p>
+          <p>
+            <a href="chapter8/test.php">Test PHP installation</a>
+          </p>
+        </div>
+      </fieldset>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>jQuery Effects Lab Page</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript" src="../scripts/support.labs.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#controlPanelForm').bind('submit',function(){
+          var effect = $('#effectsContainer :radio:checked').val();
+          var speed = $('#speedContainer :radio:checked').val();
+          if (speed=='custom') {
+            speed = new Number($('#speedValueControl').val());
+            if (isNaN(speed)||(speed<=0)) speed='normal';
+          }
+          var opacity = new Number($('#opacityValueControl').val())/100.0;
+          if ((effect=='show'||effect=='hide'||effect=='toggle')&&speed=='none') {
+            showCommand(effect);
+            $('#testSubjects').children()[effect]();
+          }
+          else if (effect=='fadeTo') {
+            if (speed=='none') speed = 'normal';
+            showCommand(effect,speed,opacity);
+            $('#testSubjects').children()[effect](speed,opacity);
+          }
+          else {
+            if (speed=='none') speed = 'normal';
+            showCommand(effect,speed);
+            $('#testSubjects').children()[effect](speed);
+          }
+          return false;
+        });
+        $('#speedContainer').click(function(event){$('#speedValueControl').attr('disabled',!$('#customSpeedControl').is(':checked'))});
+        $('#testSubject3,#testSubject4').hide();
+        $('#testSubject4').css('opacity','0.5');
+      });
+
+      function showCommand(effect,speed,opacity) {
+        var text = '$(testSubjects).'+ effect + '(';
+        if (speed) text += ((typeof speed=='string')?"'":"")+speed+((typeof speed=='string')?"'":"");
+        if (opacity) text += ','+opacity;
+        text += ');'
+        $('#appliedCommand').html(text);
+      }
+    </script>
+    <style>
+      fieldset {
+        width: 640px;
+      }
+      form>div {
+        clear: both;
+      }
+      label {
+        font-weight: bold;
+        float: left;
+        text-align: right;
+        width: 128px;
+        margin-right: 6px;
+      }
+      #speedValueControl,#opacityValueControl {
+        width: 48px;
+      }
+      #testSubject1,#testSubject3 {
+        width: 88px;
+        height: 88px;
+        padding: 8px;
+        border: 1px maroon solid;
+      }
+      #testSubjects div, #testSubjects img {
+        float: left;
+        margin-right: 16px;
+      }
+      #appliedCommand {
+        color: maroon;
+      }
+    </style>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>Lab Control Panel</legend>
+      <form id="controlPanelForm" action="" autocomplete="false">
+        <div>
+          <label>Effect:</label>
+          <div style="float:left" id="effectsContainer">
+            <div>
+              <input type="radio" name="effect" value="show" checked="checked"/> Show
+              <input type="radio" name="effect" value="hide"/> Hide
+              <input type="radio" name="effect" value="toggle"/> Toggle
+            </div>
+            <div>
+              <input type="radio" name="effect" value="fadeIn"/> Fade In
+              <input type="radio" name="effect" value="fadeOut"/> Fade Out
+              <input type="radio" name="effect" value="fadeTo"/> Fade To
+            </div>
+            <div>
+              <input type="radio" name="effect" value="slideDown"/> Slide Down
+              <input type="radio" name="effect" value="slideUp"/> Slide Up
+              <input type="radio" name="effect" value="slideToggle"/> Slide Toggle
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div id="speedContainer">
+            <label>Speed:</label>
+            <input type="radio" name="speed" value="none" checked="checked"/> None
+            <input type="radio" name="speed" value="slow"/> Slow
+            <input type="radio" name="speed" value="normal"/> Normal
+            <input type="radio" name="speed" value="fast"/> Fast
+            <input type="radio" name="speed" value="custom" id="customSpeedControl"/> Milliseconds:
+            <input type="text" name="speedValue" id="speedValueControl" disabled="disabled"/>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label>Fade to opacity:</label>
+            <input type="text" name="opacityValue" id="opacityValueControl"/> %
+          </div>
+        </div>
+
+        <div>
+          <button id="applyButton" type="submit">Apply</button>
+        </div>
+
+      </form>
+      <div id="appliedCommandContainer">
+        <label>Applied command:</label> <span id="appliedCommand"></span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Test subjects</legend>
+      <div id="testSubjects">
+        <div id="testSubject1">This is a test subject &lt;div&gt; element that starts out displayed.</div>
+        <div id="testSubject2"><img src="IMG_2298.jpg" alt="test subject img"/></div>
+        <div id="testSubject3">This is a test subject &lt;div&gt; element that starts out hidden.</div>
+        <div id="testSubject4"><img src="IMG_2319.jpg" alt="test subject img"/></div>
+      </div>
+      <div style="clear:both"></div>
+    </fieldset>
+  </body>
+</html>
