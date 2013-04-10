@@ -2,31 +2,44 @@
  */
 
 #include <stdio.h>
+#include <unistd.h>
 #include "stackar.h"
 
-#define IN 0
-#define OUT 1
+void printArray(int array[], int length);
+void swap(int array[], int a, int b);
+void perm(int list[], int k, int m);
 
 int main(int argc, char *argv[]) {
-    int c, cc, cw, cl, state;
+    int A[] = {1, 2, 3};
+    int length = 10;
+    perm(A, 0, 2);
+}
 
-    state = OUT;
-    cc = cw = cl = 0;
-    while ((c = getchar()) != EOF) {
-        ++cc;
-        if (c == '\n')
-            ++cl;
-        if (c == ' ' || c == '\t' || c == '\n')
-            state = OUT;
-        else if (state == OUT) {
-            state = IN;
-            ++cw;
+// 求 list[k:m]的全排列
+void perm(int list[], int k, int m) {
+    if (k == m) {
+        printArray(list, m + 1);
+    }
+    else {
+        for (int i = k; i <= m; ++i) {
+            swap(list, k, i);
+            perm(list, k + 1, m);
+            swap(list, k, i);
         }
     }
-    
-    printf ("character number: %d\nline number: %d\nword number %d\n", cc, cl, cw);
+}
 
-    Stack S;
-    IsEmpty(S);
-    return 0;
+void printArray(int array[], int length) {
+    for (int i = 0; i < length; ++i) {
+        printf("%d", array[i]);
+        if (i == (length - 1))
+            printf("\n");
+        else printf(" ");
+    }
+}
+
+void swap(int array[], int a, int b) {
+    int tmp = array[a];
+    array[a] = array[b];
+    array[b] = tmp;
 }
