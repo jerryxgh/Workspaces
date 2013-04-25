@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>setReadOnly() Test</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <link rel="stylesheet" type="text/css"
+          href="test.setreadonly.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript"
+            src="jquery.jqia.setreadonly.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#sameAddressControl').click(function(){
+          var same = this.checked;
+          $('#billAddress').val(same ? $('#shipAddress').val():'');
+          $('#billCity').val(same ? $('#shipCity').val():'');
+          $('#billState').val(same ? $('#shipState').val():'');
+          $('#billZip').val(same ? $('#shipZip').val():'');
+          $('#billingAddress input').setReadOnly(same);
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>The Test Form</legend>
+      <div>
+        <form name="testForm">
+          <div>
+            <label>First name:</label>
+            <input type="text" name="firstName" id="firstName"/>
+          </div>
+          <div>
+            <label>Last name:</label>
+            <input type="text" name="lastName" id="lastName"/>
+          </div>
+          <div id="shippingAddress">
+            <h2>Shipping address</h2>
+            <div>
+              <label>Street address:</label>
+              <input type="text" name="shipAddress"
+                     id="shipAddress"/>
+            </div>
+            <div>
+              <label>City, state, zip:</label>
+              <input type="text" name="shipCity" id="shipCity"/>
+              <input type="text" name="shipState" id="shipState"/>
+              <input type="text" name="shipZip" id="shipZip"/>
+            </div>
+          </div>
+          <div id="billingAddress">
+            <h2>Billing address</h2>
+            <div>
+              <input type="checkbox" id="sameAddressControl"/>
+              Billing address is same as shipping address
+            </div>
+            <div>
+              <label>Street address:</label>
+              <input type="text" name="billAddress"
+                     id="billAddress"/>
+            </div>
+            <div>
+              <label>City, state, zip:</label>
+              <input type="text" name="billCity" id="billCity"/>
+              <input type="text" name="billState" id="billState"/>
+              <input type="text" name="billZip" id="billZip"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </fieldset>
+  </body>
+</html>

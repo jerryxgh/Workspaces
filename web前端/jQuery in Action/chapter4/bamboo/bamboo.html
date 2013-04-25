@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Bamboo Asian Grille - Online Order Form</title>
+    <link rel="stylesheet" type="text/css" href="bamboo.css">
+    <script type="text/javascript"
+            src="../../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('fieldset div div').hide();
+        $(':checkbox').click(function(){
+          var checked = this.checked;
+          $('div',$(this).parents('div:first'))
+            .css('display',checked ? 'block':'none');
+          $('input[type=text]',$(this).parents('div:first'))
+            .attr('disabled',!checked)
+            .css('color',checked ? 'black' : '#f0f0f0')
+            .val(1)
+            .change()
+            .each(function(){ if (checked) this.focus(); });
+        });
+        $('span[price] input[type=text]').change(function(){
+          $('~ span:first',this).text(
+            $(this).val() *
+            $(this).parents("span[price]:first").attr('price')
+          );
+        });
+        $('span[price] input[type=text]').change();
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>Bamboo Asian Grille</h1>
+    <h2>Online Order Menu</h2>
+    <fieldset>
+      <legend>Appetizers</legend>
+
+      <div>
+        <label>
+          <input type="checkbox" name="appetizers"
+                 value="imperial"/>
+          Fried Imperial rolls (2)
+        </label>
+        <span price="3">
+          <input type="text" name="imperial.quantity"
+                 disabled="disabled" value="1"/>
+          $<span></span>
+        </span>
+        <div>
+          <label>
+            <input type="radio" name="imperial.option"
+                   value="pork" checked="checked"/>
+            Pork
+          </label>
+          <label>
+            <input type="radio" name="imperial.option"
+                   value="vegetarian"/>
+            Vegetarian
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" name="appetizers" value="spring"/>
+          Spring rolls (2)
+        </label>
+        <span price="4">
+          <input type="text" name="spring.quantity"
+                 disabled="disabled" value="1"/>
+          $<span></span>
+        </span>
+        <div>
+          <label>
+            <input type="radio" name="spring.option" value="pork"
+                   checked="checked"/>
+            Pork
+          </label>
+          <label>
+            <input type="radio" name="spring.option"
+                   value="shrimp"/>
+            Pork and Shrimp
+          </label>
+          <label>
+            <input type="radio" name="spring.option"
+                 value="vegetarian"/>
+            Vegetarian
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" name="appetizers" value="vnrolls"/>
+          Vietnamese rolls (4)
+        </label>
+        <span price="5">
+          <input type="text" name="vnrolls.quantity"
+                 disabled="disabled" value="1"/>
+          $<span></span>
+        </span>
+        <div>
+          <label>
+            <input type="radio" name="vnrolls.option" value="pork"
+                   checked="checked"/>
+            Pork
+          </label>
+          <label>
+            <input type="radio" name="vnrolls.option"
+                   value="shrimp"/>
+            Pork and Shrimp
+          </label>
+          <input type="radio" name="vnrolls.option"
+                 value="vegetarian"/>
+          <label>Vegetarian</label>
+        </div>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" name="appetizers" value="rangoon"/>
+          Crab rangoon (8)
+        </label>
+        <span price="6">
+          <input type="text" name="rangoon.quantity"
+                 disabled="disabled" value="1"/>
+          $<span></span>
+        </span>
+        <div>
+          <label>
+            <input type="radio" name="rangoon.option"
+                   value="sweet checked="checked"/>
+            Sweet-and-sour sauce
+          </label>
+          <label>
+            <input type="radio" name="rangoon.option" value="hot"/>
+            Hot mustard
+          </label>
+          <label>
+            <input type="radio" name="rangoon.option" value="both"/>
+            Both
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" name="appetizers"
+                 value="stickers"/>
+          Pot stickers (6)
+        </label>
+        <span price="5">
+          <input type="text" name="stickers.quantity"
+                 disabled="disabled" value="1"/>
+          $<span></span>
+        </span>
+        <div>
+          <label>
+            <input type="radio" name="stickers.option"
+                   value="pork" checked="checked"/>
+            Pork
+          </label>
+          <label>
+            <input type="radio" name="stickers.option"
+                   value="vegetarian"/>
+            Vegetarian
+          </label>
+        </div>
+      </div>
+
+      <div></div>
+
+    </fieldset>
+  </body>
+</html>

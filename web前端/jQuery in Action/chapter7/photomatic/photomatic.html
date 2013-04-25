@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Photomatic Test</title>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <link rel="stylesheet" type="text/css" href="photomatic.css">
+    <script type="text/javascript"
+            src="../../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript"
+            src="jquery.jqia.photomatic.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#thumbnails img').photomatic({
+          photoElement: '#photo',
+          previousControl: '#previousButton',
+          nextControl: '#nextButton',
+          firstControl: '#firstButton',
+          lastControl: '#lastButton'
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>Photomatic Tester</h1>
+    <div id="thumbnails">
+      <img src="thumbnails/IMG_2212.jpg"/>
+      <img src="thumbnails/IMG_2222.jpg"/>
+      <img src="thumbnails/IMG_2227.jpg"/>
+      <img src="thumbnails/IMG_2235.jpg"/>
+      <img src="thumbnails/IMG_2259.jpg"/>
+      <img src="thumbnails/IMG_2269.jpg"/>
+      <img src="thumbnails/IMG_2273.jpg"/>
+      <img src="thumbnails/IMG_2287.jpg"/>
+      <img src="thumbnails/IMG_2292.jpg"/>
+      <img src="thumbnails/IMG_2296.jpg"/>
+      <img src="thumbnails/IMG_2298.jpg"/>
+      <img src="thumbnails/IMG_2302.jpg"/>
+      <img src="thumbnails/IMG_2310.jpg"/>
+      <img src="thumbnails/IMG_2319.jpg"/>
+      <img src="thumbnails/IMG_2331.jpg"/>
+      <img src="thumbnails/IMG_2335.jpg"/>
+
+    </div>
+    <div id="photoContainer">
+      <img id="photo" src=""/>
+    </div>
+    <div id="buttonBar">
+      <button type="button" id="firstButton">First</button>
+      <button type="button" id="previousButton">Previous</button>
+      <button type="button" id="nextButton">Next</button>
+      <button type="button" id="lastButton">Last</button>
+    </div>
+  </body>
+</html>

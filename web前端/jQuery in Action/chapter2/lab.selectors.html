@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Selectors Lab</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript" src="../scripts/support.labs.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#resultsDisplay').hide();
+        $('#labForm').submit(function(){
+          try {
+            var selector = $('#selectorField').val();
+            if (selector.length > 0) {
+              var wrappedSet = domSampleFrame.applySelector(selector);
+              $('#jQueryStatement').html('$("' + selector + '").addClass("wrappedElement")');
+              $('#wrappedSetSizeDisplay').html(wrappedSet.size());
+              $('#elementInfoDisplay').html(wrappedSet.formatForDisplay());
+              $('#resultsDisplay').show();
+            }
+          }
+          catch(e) {
+            alert('error:'+e);
+          }
+          return false;
+        });
+        $.get('sample.dom.html',function(data){
+          $('#htmlForSample').html(data.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br/>').replace(/ /g,'&nbsp;'));
+        });
+        $('#selectorField').focus();
+      });
+    </script>
+    <style>
+      #selectorFieldset,#domSampleFieldset {
+        width: 388px;
+        float: left;
+      }
+      #domSampleFieldset {
+        margin-left: 12px;
+      }
+      #domSampleFrame {
+        width: 368px;
+        height: 432px;
+      }
+      #resultsDisplay {
+        padding: 2px;
+        background-color: beige;
+      }
+      #elementInfoDisplay {
+        width: 368px;
+        color: maroon;
+      }
+      #elementInfoDisplay div {
+        margin-left: 8px;
+      }
+      #htmlDisplayFieldset {
+        clear: both;
+        width: 809px;
+      }
+      #selectorField {
+        width: 95%;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <h1>Selectors Lab</h1>
+
+    <fieldset id="selectorFieldset">
+      <legend>Selector</legend>
+      <form id="labForm">
+        <div>
+          Type a selector into the text field below and click the Apply button.
+        </div>
+        <div>
+          <label>Selector:</label><br/>
+          <textarea rows="3" id="selectorField"></textarea>
+          <br/>
+          <button type="submit" id="applyButton">Apply</button>
+        </div>
+      </form>
+      <div id="resultsDisplay">
+        <div>
+          <label>jQuery statement:</label> <span id="jQueryStatement"></span>
+        </div>
+        <div>
+          <label>Matched elements: <span id="wrappedSetSizeDisplay">0</span> match(es)</label>
+          <div id="elementInfoDisplay"></div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset id="domSampleFieldset">
+      <legend>DOM Sample</legend>
+      <iframe name="domSampleFrame" id="domSampleFrame" src="subpage.selectors.html"></iframe>
+    </fieldset>
+
+    <fieldset id="htmlDisplayFieldset">
+      <legend>HTML for DOM Sample</legend>
+      <pre id="htmlForSample"></pre>
+    </fieldset>
+
+  </body>
+</html>

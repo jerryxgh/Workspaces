@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>New &lt;div&gt;s Example</title>
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js">
+    </script>
+    <script type="text/javascript">
+      $(function(){
+        $("<div class='foo'>I have foo!</div><div>I don 't</div>")
+          .filter(".foo").click(function() {
+            alert("I'm foo!");
+          }).end().appendTo("#someParentDiv");
+      });
+    </script>
+  </head>
+
+  <body>
+    <div>Div 1</div>
+    <div id="someParentDiv">Div 2</div>
+    <div>Div 3</div>
+  </body>
+</html>

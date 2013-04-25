@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>width() and height() Test</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        report();
+      });
+
+      function report() {
+        $('#display').html(
+          $('#testSubject').width()+'x'+$('#testSubject').height()
+        );
+      }
+    </script>
+    <style>
+      #testSubject {
+        background-color: #cfeace;
+        border: 1px solid #00457b;
+        padding: 8px;
+        font-size: .85em;
+      }
+    </style>
+  </head>
+
+  <body onresize="report()">
+    <div id="testSubject">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+      Aliquam eget enim id neque aliquet porttitor. Suspendisse
+      nisl enim, nonummy ac, nonummy ut, dignissim ac, justo.
+      Aenean imperdiet semper nibh. Vivamus ligula. In in ipsum
+      sed neque vehicula rhoncus. Nam faucibus pharetra nisi.
+      Integer at metus. Suspendisse potenti. Vestibulum ante
+      ipsum primis in faucibus orci luctus et ultrices posuere
+      cubilia Curae; Proin quis eros at metus pretium elementum.
+    </div>
+    <div id="display"></div>
+  </body>
+</html>

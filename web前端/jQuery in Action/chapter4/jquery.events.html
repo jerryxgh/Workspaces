@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>jQuery Events Example</title>
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js">
+    </script>
+    <script type="text/javascript">
+      $(function(){
+        $('#vstar')
+          .bind('click',function(event) {
+            say('Whee once!');
+          })
+          .bind('click',function(event) {
+            say('Whee twice!');
+          })
+          .bind('click',function(event) {
+            say('Whee three times!');
+          });
+      });
+
+      function say(text) {
+        $('#console').append('<div>'+text+'</div>');
+      }
+    </script>
+  </head>
+
+  <body>
+    <img id="vstar" src="vstar.jpg"/>
+    <div id="console"></div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>jQuery Dimensions Plugin Scrolling Lab Page</title>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <script type="text/javascript" src="../../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery.dimensions.js"></script>
+    <script type="text/javascript" src="../../scripts/support.labs.js"></script>
+    <script type="text/javascript">
+      function showInfo() {
+        $('#windowInfo').html('scrollTop: '+$(window).scrollTop()+' scrollLeft: '+$(window).scrollLeft());
+        $('#documentInfo').html('scrollTop: '+$(document).scrollTop()+' scrollLeft: '+$(document).scrollLeft());
+        $('#divInfo').html('scrollTop: '+$('#testSubject').scrollTop()+' scrollLeft: '+$('#testSubject').scrollLeft());
+      }
+
+      $(function(){
+        $('#controlPanelForm').bind('submit',function(){
+          var target = $('input[name=target]:radio:checked').val();
+          switch (target) {
+            case 'window': target = $(window); break;
+            case 'document': target = $(document); break;
+            case 'div': target = $('#testSubject')
+          }
+          var scrollTopValue = $('#scrollTopValueControl').val();
+          var scrollLeftValue = $('#scrollLeftValueControl').val();
+          if (scrollTopValue!='') target.scrollTop(scrollTopValue);
+          if (scrollLeftValue!='') target.scrollLeft(scrollLeftValue);
+          showInfo();
+          return false;
+        });
+
+        $('#restoreButton').click(function(){
+          $(window).scrollLeft(0).scrollTop(0);
+          $('#testSubject').scrollLeft(0).scrollTop(0);
+          showInfo();
+        });
+
+        $(window).add('#testSubject').scroll(showInfo);
+
+        showInfo();
+      });
+    </script>
+    <style>
+      body {
+        width: 2000px;
+        height: 2000px;
+      }
+      h2 {
+        font-size: 1.4em;
+        margin-bottom: 8px;
+      }
+      fieldset {
+        width: 480px;
+      }
+      #testSubject {
+        width: 360px;
+        height: 200px;
+        overflow: scroll;
+      }
+      label {
+        font-weight: bold;
+        margin-left: 8px;
+      }
+      #scrollTopValueControl,#scrollLeftValueControl {
+        width: 48px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Scrolling Lab</h1>
+    <fieldset>
+      <legend>Lab Control Panel</legend>
+      <form id="controlPanelForm" action="" autocomplete="false">
+        <div>
+          <div>
+            <label>scrollTop:</label>
+            <input type="text" name="scrollTopValue" id="scrollTopValueControl"/>
+          </div>
+          <div>
+            <label>scrollLeft:</label>
+            <input type="text" name="scrollLeftValue" id="scrollLeftValueControl"/>
+          </div>
+          <div id="targetContainer">
+            <label>Apply to:</label>
+            <input type="radio" name="target" value="window"/> window
+            <input type="radio" name="target" value="document"/> document
+            <input type="radio" name="target" value="div" checked="checked"/> test subject
+          </div>
+        </div>
+
+        <div>
+          <button id="applyButton" type="submit">Apply</button>
+          <button id="restoreButton" type="button">Restore</button>
+        </div>
+
+      </form>
+      <h2>Results:</h2>
+      <div id="resultsContainer">
+        <div><label>Window:</label> <span id="windowInfo"></span></div>
+        <div><label>Document:</label> <span id="documentInfo"></span></div>
+        <div><label>Test subject:</label> <span id="divInfo"></span></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Test subject</legend>
+      <div id="testSubject"><img src="IMG_2227.jpg"/></div>
+    </fieldset>
+
+  </body>
+</html>

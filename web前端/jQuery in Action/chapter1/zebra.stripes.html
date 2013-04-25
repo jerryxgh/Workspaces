@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Zebra Stripes!</title>
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js">
+    </script>
+    <script type="text/javascript">
+      $(function() {
+        $("table tr:nth-child(even)").addClass("striped");
+      });
+    </script>
+    <style>
+      body,td {
+        font-size: 10pt;
+      }
+      table {
+        background-color: black;
+        border: 1px black solid;
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px outset silver;
+        background-color: maroon;
+        color: white;
+      }
+      tr {
+        background-color: white;
+        margin: 1px;
+      }
+      tr.striped {
+        background-color: coral;
+      }
+      td {
+        padding: 1px 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <th>Year</th>
+        <th>Make</th>
+        <th>Model</th>
+      </tr>
+      <tr>
+        <td>1965</td>
+        <td>Ford</td>
+        <td>Mustang</td>
+      </tr>
+      <tr>
+        <td>1970</td>
+        <td>Toyota</td>
+        <td>Corolla</td>
+      </tr>
+      <tr>
+        <td>1979</td>
+        <td>AMC</td>
+        <td>Jeep CJ-5</td>
+      </tr>
+      <tr>
+        <td>1983</td>
+        <td>Ford</td>
+        <td>EXP</td>
+      </tr>
+      <tr>
+        <td>1985</td>
+        <td>Dodge</td>
+        <td>Daytona</td>
+      </tr>
+      <tr>
+        <td>1990</td>
+        <td>Chrysler</td>
+        <td>Jeep Wrangler Sahara</td>
+      </tr>
+      <tr>
+        <td>1995</td>
+        <td>Ford</td>
+        <td>Ranger</td>
+      </tr>
+      <tr>
+        <td>1997</td>
+        <td>Chrysler</td>
+        <td>Jeep Wrangler Sahara</td>
+      </tr>
+      <tr>
+        <td>2000</td>
+        <td>Chrysler</td>
+        <td>Jeep Wrangler Sahara</td>
+      </tr>
+      <tr>
+        <td>2005</td>
+        <td>Chrysler</td>
+        <td>Jeep Wrangler Unlimited</td>
+      </tr>
+      <tr>
+        <td>2007</td>
+        <td>Dodge</td>
+        <td>Caliber R/T</td>
+      </tr>
+    </table>
+  </body>
+</html>

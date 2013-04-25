@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>$.each test</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+
+    </script>
+  </head>
+
+  <body>
+    <script>
+      var anArray = ['one','two','three',4];
+      var anObject = {one:1, two:2, three:3};
+
+      $.each(anArray,function(n,value){
+        document.write('['+n+']='+value);
+      });
+
+      $.each(anObject,function(n,value){
+        document.write('['+n+']='+value);
+      });
+    </script>
+  </body>
+</html>

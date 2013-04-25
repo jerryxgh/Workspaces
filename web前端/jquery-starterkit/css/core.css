@@ -1,0 +1,72 @@
+﻿body {
+	padding: 0 10px;
+	font: normal 82.5% "Lucida Grande", Helvetica, Verdana, Arial;
+}
+	
+p { margin: 10px 0; }
+
+li { margin-left: 10px; }
+
+h3 { margin: 5px 0; }
+
+.red { background-color: red; }
+.blue { color: blue; }
+.green { color: green; }
+
+#rating {
+	border: 1px solid black;
+	margin: 5px;
+	padding: 5px;
+}
+
+table {
+	border: 1px solid #666;
+	margin: 20px 0 20px 0 !important;
+}
+
+th, td {
+	padding: 2px 4px 2px 4px !important;
+	text-align: left;
+	vertical-align: top;
+}
+
+th {
+	background-color: #fc0;
+}
+
+th:hover {
+	background-color: #fc7;
+}
+
+tbody tr.even {
+	background-color: #fea
+}
+
+tr a {
+	color: rgb(102, 102, 102);
+	text-decoration: none;
+}
+tr a:hover {
+	text-decoration: underline;
+}
+
+dl dd {
+	margin-left: 10px;
+}
+
+dl dt {
+	font-weight: bold;
+}
+
+dl {
+	border: 1px solid black;
+	margin: 5px;
+}
+
+.highlight {
+	border: 5px dotted #eee;
+}
+
+.error {
+	background-color: #fee;
+}

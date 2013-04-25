@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>UI Draggables Lab</title>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <script type="text/javascript" src="../../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript" src="../../scripts/support.labs.js"></script>
+    <script type="text/javascript" src="../../scripts/ui.mouse.js"></script>
+    <script type="text/javascript" src="../../scripts/ui.draggable.js"></script>
+    <script type="text/javascript" src="../../scripts/ui.draggable.ext.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#labForm').submit(function(){ return false; } );
+        $('#applyButton').click(function(){
+          $('#testSubject').draggableDestroy();
+          $('#startInfo').html('---');
+          $('#currentInfo').html('---');
+          $('#stopInfo').html('---');
+          var options = {};
+          //
+          // boolean options
+          //
+          $('.booleanOption:checked').each(function(){
+            if ($(this).val()!='') options[this.name] = $(this).val() == 'true';
+          });
+          //
+          // radio options
+          //
+          $('.radioOption:checked').each(function(){
+            if ($(this).val()!='') options[this.name] = $(this).val();
+          });
+          //
+          // value options
+          //
+          $('.valueOption').each(function(){
+            if ($(this).val()!='') options[this.name] = $(this).val();
+          });
+          //
+          // special cases
+          //
+          var fade = $('[name=effect]:checked').val();
+          if (fade!='') {
+            switch (fade) {
+              case '0': fade = ['fade','']; break;
+              case '1': fade = ['','fade']; break;
+              case '2': fade = ['fade','fade']; break;
+            }
+            options.effect = fade;
+          }
+          var gridX = $('#gridXField').val();
+          var gridY = $('#gridYField').val();
+          if (gridX!=''||gridY!='') {
+            gridX = (gridX=='') ? 0 : parseInt(gridX);
+            gridY = (gridY=='') ? 0 :parseInt(gridY);
+            options.grid=[gridX,gridY];
+          }
+          var cursorAtTop = $('#cursorAtTopField').val();
+          var cursorAtLeft = $('#cursorAtLeftField').val();
+          if (cursorAtTop!=''||cursorAtLeft!='') {
+            cursorAtTop = (cursorAtTop=='') ? 0 : parseInt(cursorAtTop);
+            cursorAtLeft = (cursorAtLeft=='') ? 0 : parseInt(cursorAtLeft);
+            options.cursorAt={top:cursorAtTop,left:cursorAtLeft};
+          }
+          //
+          // Display
+          //
+          $('#commandDisplay').html("$('#testSubject').draggable("+$.toSource(options)+");");
+          //
+          // Callbacks
+          //
+          options.start = function(event,info) {
+            $('#startInfo').html('('+info.position.left+','+info.position.top+')');
+            $('#currentInfo').html('---');
+            $('#stopInfo').html('---');
+          }
+          options.drag = function(event,info) { $('#currentInfo').html('('+info.position.left+','+info.position.top+')'); }
+          options.stop = function(event,info) { $('#stopInfo').html('('+info.position.left+','+info.position.top+')'); }
+          //
+          // Apply
+          //
+          $('#testSubject').draggable(options);
+        });
+        $('#disableButton').click(function(){
+          $('#testSubject').draggableDisable();
+          $('#commandDisplay').html("$('#testSubject').draggableDisable();");
+        });
+        $('#enableButton').click(function(){
+          $('#testSubject').draggableEnable();
+          $('#commandDisplay').html("$('#testSubject').draggableEnable();");
+        });
+        $('#labForm').bind('reset',function(){ $('#testSubject').draggableDestroy(); });
+      });
+    </script>
+    <style>
+      #optionsContainer>div {
+        float: left;
+        width: 360px;
+      }
+      #buttonBar {
+        clear: both;
+      }
+      #column2 input[type=text] {
+        width: 32px;
+      }
+      #testSubjectContainer {
+        height: 188px;
+      }
+      label {
+        float: left;
+        text-align: right;
+        width: 100px;
+        font-weight: bold;
+        margin-right: 6px;
+      }
+      #column2 label {
+        width: 144px;
+      }
+      h2 {
+        margin-bottom: 3px;
+      }
+      #console div {
+        clear: both;
+      }
+      #console label {
+        width: 120px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>UI Draggables Lab</h1>
+
+    <fieldset>
+      <legend>Control Panel</legend>
+      <form action="" id="labForm">
+        <h2>Draggable options</h2>
+        <div id="optionsContainer">
+          <div id="column1">
+            <div>
+              <label>helper:</label>
+              <input type="radio" name="helper" value="" checked="checked" class="radioOption">unspecified
+              <input type="radio" name="helper" value="original" class="radioOption">original
+              <input type="radio" name="helper" value="clone" class="radioOption">clone
+            </div>
+            <div>
+              <label>revert:</label>
+              <input type="radio" name="revert" value="" checked="checked" class="booleanOption">unspecified
+              <input type="radio" name="revert" value="true" class="booleanOption">true
+              <input type="radio" name="revert" value="false" class="booleanOption">false
+            </div>
+            <div>
+              <label>axis:</label>
+              <input type="radio" name="axis" value="" checked="checked" class="radioOption">none
+              <input type="radio" name="axis" value="x" class="radioOption">x
+              <input type="radio" name="axis" value="y" class="radioOption">y
+            </div>
+            <div>
+              <label>containment:</label>
+              <input type="radio" name="containment" value="" checked="checked" class="radioOption">none
+              <input type="radio" name="containment" value="document" class="radioOption">document
+              <input type="radio" name="containment" value="parent" class="radioOption">parent
+            </div>
+            <div>
+              <label>effect:</label>
+              <input type="radio" name="effect" value="" checked="checked">neither
+              <input type="radio" name="effect" value="0">at start
+              <input type="radio" name="effect" value="1">at end
+              <input type="radio" name="effect" value="2">both
+            </div>
+          </div>
+          <div id="column2">
+            <div>
+              <label>opacity:</label>
+              <input type="text" id="opacityField" name="opacity" class="valueOption"/> (0.0 through 1.0)
+            </div>
+            <div>
+              <label>preventionDistance:</label>
+              <input type="text" id="preventionDistanceField" name="preventionDistance" class="valueOption"/> px
+            </div>
+            <div>
+              <label>grid:</label>
+              <input type="text" id="gridXField" name="gridX"/> by
+              <input type="text" id="gridYField" name="gridY"/>
+            </div>
+            <div>
+              <label>cursorAt:</label>
+              top <input type="text" id="cursorAtTopField" name="cursorAtTop"/>
+              left <input type="text" id="cursorAtLeftField" name="cursorAtLeft"/>
+            </div>
+          </div>
+        </div>
+        <div id="buttonBar">
+          <button type="button" id="applyButton">Apply</button>
+          <button type="button" id="disableButton">Disable</button>
+          <button type="button" id="enableButton">Enable</button>
+          <button type="reset" id="resetButton">Reset</button>
+        </div>
+      </form>
+      <div>
+        <h2>Executed command:</h2>
+        <div id="commandDisplay">---</div>
+      </div>
+    </fieldset>
+
+    <fieldset id="testSubjectContainer">
+      <legend>Test Subject</legend>
+      <img id="testSubject" src="dragon.gif" alt="test subject"/>
+    </fieldset>
+
+    <fieldset id="console">
+      <legend>Console</legend>
+      <div><label>Drag started at:</label> <span id="startInfo">---</span></div>
+      <div><label>Current position:</label> <span id="currentInfo">---</span></div>
+      <div><label>Drag stopped at:</label> <span id="stopInfo">---</span></div>
+    </fieldset>
+
+  </body>
+</html>

@@ -1,0 +1,10 @@
+[
+  {url:'tomcat.pdf',caption:'Tomcat setup document'},
+  {url:'test.php',caption:'Test PHP installation'},
+  {url:'listing.8.3.html',caption:'Listing 8.3 Example'},
+  {url:'bootcloset/boot.closet.1.html',caption:'The Boot Closet example, phase 1'},
+  {url:'$.get.html',caption:'$.get() Example'},
+  {url:'bootcloset/boot.closet.2.html',caption:'The Boot Closet example, phase 2'},
+  {url:'listing.8.6.html',caption:'Listing 8.6 Example'},
+  {url:'bootcloset/boot.closet.3.html',caption:'The Boot Closet example, phase 3'}
+]

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Move and Copy Laboratory Page</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      function execute() {
+        var command = $('input[name=command]:checked').val();
+        $('#flower')[command]('#targets p')
+        $('#car')[command]('#targets p:first')
+      }
+    </script>
+    <style>
+      img { width: 108px; }
+      fieldset { width: 360px; }
+    </style>
+  </head>
+
+  <body>
+    <h1>Move and Copy Laboratory</h1>
+    <fieldset id="source">
+      <legend>Source elements</legend>
+      <img id="flower" src="flower.png"/>
+      <img id="car" src="car.png"/>
+    </fieldset>
+
+    <fieldset id="targets">
+      <legend>Target elements</legend>
+      <p><img src="dragonfly.png"/></p>
+      <p><img src="dragonfly.png"/></p>
+      <p><img src="dragonfly.png"/></p>
+    </fieldset>
+
+    <div>
+      <form action="" onsubmit="return false;">
+        <div>
+          <input type="radio" name="command" value="appendTo" checked="checked"/>
+          appendTo
+          <input type="radio" name="command" value="prependTo"/>
+          prependTo
+        </div>
+        <button type="button" id="testButton"
+                onclick="execute()">Execute</button>
+      </form>
+    </div>
+
+  </body>
+</html>

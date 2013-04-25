@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Custom Effects Demo</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript"
+            src="../scripts/jquery.dimensions.js"></script>
+    <script type="text/javascript">
+      $(function(){
+
+        $('#scaleButton').click(function(){
+          $('#testSubject').each(function(){
+            $(this).animate(
+              {
+                width: $(this).width() * 2,
+                height: $(this).height() * 2
+              },
+              'slow'
+            );
+          });
+        });
+
+        $('#dropButton').click(function(){
+          $('#testSubject').each(function(){
+            $(this)
+              .css('position','relative')
+              .animate(
+                {
+                  opacity: 'hide',
+                  top: $(window).height() - $(this).height() -
+                       $(this).position().top
+                },
+                'slow',
+                function(){ $(this).hide(); });
+          });
+        });
+
+        $('#puffButton').click(function(){
+          $('#testSubject').each(function(){
+            var position = $(this).position();
+            $(this)
+              .css({position:'absolute',top:position.top,
+                    left:position.left})
+              .animate(
+                {
+                  opacity: 'hide',
+                  width: $(this).width() * 5,
+                  height: $(this).height() * 5,
+                  top: position.top - ($(this).height() * 5 / 2),
+                  left: position.left - ($(this).width() * 5 / 2)
+                },
+                'normal');
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>Custom Effects Demo</h1>
+    <fieldset>
+      <legend>Custom Effects</legend>
+      <img src="IMG_2298.jpg" id="testSubject"/>
+      <div>
+        <button type="button" id="scaleButton">Scale</button>
+        <button type="button" id="dropButton">Drop</button>
+        <button type="button" id="puffButton">Puff</button>
+      </div>
+    </fieldset>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Document-ready Test</title>
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js">
+    </script>
+    <script type="text/javascript">
+      window.onload = function() {
+        alert('onload handler');
+      }
+      $(function(){
+        alert('ready handler 1');
+      });
+      $(function(){
+        alert('ready handler 2');
+      });
+      $(function(){
+        alert('ready handler 3');
+      });
+    </script>
+  </head>
+
+  <body>
+  </body>
+</html>

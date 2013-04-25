@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Get Form Values Laboratory</title>
+    <link rel="stylesheet" type="text/css" href="../../common.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript"
+            src="../../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript"
+            src="../../scripts/support.labs.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery.form.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#getButton').click(function(){
+          $('#console').empty().text( $.toSource($('#testForm *').fieldValue()));
+        });
+        $('#getAllButton').click(function(){
+          $('#console').empty().text( $.toSource($('#testForm *').fieldValue(false)));
+        });
+        $('#serializeFormButton').click(function(){
+          $('#console').empty().text( $('#testForm').formSerialize());
+        });
+        $('#serializeFieldsButton').click(function(){
+          $('#console').empty().text( $('#testForm input').fieldSerialize());
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>Get Form Values Laboratory</h1>
+    <fieldset>
+      <legend>The form</legend>
+      <div>
+        <form id="testForm" action="">
+          <div>
+            <label>Text field:</label>
+            <input type="text" name="text" value="some text"/>
+          </div>
+
+          <div>
+            <label>Dropdown:</label>
+            <select name="dropdown">
+              <option>One</option>
+              <option>Two</option>
+              <option selected="selected">Three</option>
+              <option>Four</option>
+              <option>Five</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Check box group:</label>
+            <input type="checkbox" name="cb" value="cb.1">One
+            <input type="checkbox" name="cb" value="cb.2" checked="checked">Two
+            <input type="checkbox" name="cb" value="cb.3">Three
+          </div>
+
+          <div>
+            <label>Radio group:</label>
+            <input type="radio" name="radio" value="radio.1">One
+            <input type="radio" name="radio" value="radio.2" checked="checked">Two
+            <input type="radio" name="radio" value="radio.3">Three
+          </div>
+
+          <div>
+            <label>Text area:</label>
+            <textarea name="textarea" rows="2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</textarea>
+          </div>
+
+          <div>
+            <button type="button" id="getButton">Get successful values</button>
+            <button type="button" id="getAllButton">Get all values</button>
+            <button type="button" id="serializeFormButton">Serialize form</button>
+            <button type="button" id="serializeFieldsButton">Serialize fields</button>
+          </div>
+        </form>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Results</legend>
+      <div id="console"></div>
+    </fieldset>
+  </body>
+</html>

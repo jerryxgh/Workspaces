@@ -1,0 +1,10 @@
+[
+  {url:'form/lab.get.values.html',caption:'The Get Form Values Laboratory'},
+  {url:'form/lab.reset.and.clear.html',caption:'The Clear and Reset Laboratory'},
+  {url:'form/lab.ajaxSubmit.html',caption:'The ajaxSubmit Laboratory'},
+  {url:'form/lab.ajaxForm.html',caption:'The ajaxForm Laboratory'},
+  {url:'dimensions/lab.scroll.html',caption:'The Scrolling Laboratory'},
+  {url:'livequery/lab.livequery.html',caption:'The Live Query Lab'},
+  {url:'ui/lab.draggables.html',caption:'The UI Draggables Lab'},
+  {url:'ui/lab.droppables.html',caption:'The UI Droppables Lab'}
+]

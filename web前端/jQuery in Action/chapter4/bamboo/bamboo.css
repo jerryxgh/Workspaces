@@ -1,0 +1,60 @@
+body {
+  background-color: burlywood;
+  font-family: sans-serif;
+  font-size: 8pt;
+  background-image: url(bamboo.jpg);
+  background-repeat: no-repeat;
+  background-position: 0px -100px;
+  padding-left: 120px;
+}
+
+h1,h2 {
+  font-family: papyrus,fantasy;
+  margin: 0px;
+}
+
+fieldset {
+  width: 340px;
+  border: ridge 2px darkgreen;
+  line-height: 1.8em;
+}
+
+legend {
+  border: ridge 2px darkgreen;
+  font-weight: bold;
+  padding: 2px 8px;
+  background-color: darkgreen;
+  color: white;
+}
+
+fieldset>div>label>input,fieldset>div>label {
+  float: left;
+}
+
+fieldset label+span {
+  float: right;
+}
+
+fieldset>div>input+label {
+  margin-top: 3px;
+}
+
+fieldset div div {
+  margin-left: 18px;
+}
+
+fieldset div {
+  clear: both;
+}
+
+input, button, select {
+  vertical-align: middle;
+}
+
+fieldset input[type=text] {
+  width: 16px;
+  font-size: 0.75em;
+  text-align: right;
+  margin-right: 8px;
+  color: #f0f0f0;
+}

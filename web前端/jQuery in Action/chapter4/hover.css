@@ -1,0 +1,19 @@
+.outer {
+  position: relative;
+  width: 220px;
+  height: 96px;
+  border: solid 1px black;
+  background-color: coral;
+}
+
+.inner {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  border: solid 1px black;
+  background-color: khaki;
+}
+
+#outer2 {
+  margin-top: 24px;
+}

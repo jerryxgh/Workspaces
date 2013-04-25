@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html id="greatgreatgrandpa">
+  <head>
+    <title>DOM Level 0 Bubbling Example</title>
+    <script type="text/javascript" src="../scripts/jquery-1.2.1.js">
+    </script>
+    <script type="text/javascript">
+      $(function(){
+        $('*').each(function(){
+          var current = this;
+          this.onclick = function(event) {
+            if (!event) event = window.event;
+            var target = (event.target) ?
+                         event.target : event.srcElement;
+            say('For ' + current.tagName + '#'+ current.id +
+                ' target is ' + target.id);
+          }
+        });
+      });
+
+      function say(text) {
+        $('#console').append('<div>'+text+'</div>');
+      }
+    </script>
+  </head>
+
+  <body id="greatgrandpa">
+    <div id="grandpa">
+      <div id="pops">
+        <img id="vstar" src="vstar.jpg"/>
+      </div>
+    </div>
+    <div id="console"></div>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Hover example</title>
+    <link rel="stylesheet" type="text/css" href="hover.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      function report(event) {
+        $('#console').append('<div>'+event.type+'</div>');
+      }
+
+      $(function(){
+        $('#outer1')
+         .bind('mouseover',report)
+         .bind('mouseout',report);
+        $('#outer2').hover(report,report);
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="outer" id="outer1">
+      Outer 1
+      <div class="inner" id="inner1">Inner 1</div>
+    </div>
+    <div class="outer" id="outer2">
+      Outer 2
+      <div class="inner" id="inner2">Inner 2</div>
+    </div>
+    <div id="console"></div>
+  </body>
+</html>

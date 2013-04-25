@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>testing</title>
+    <script type="text/javascript" src="jquery-1.2.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery.form.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('form').ajaxForm({
+          beforeSubmit: function(data,jq,options){
+            options.semantic = true;
+            console.log(data);
+            console.log(options);
+            return true;
+          }
+        });
+
+      });
+    </script>
+  </head>
+
+  <body>
+    <form action="xyz">
+      <input type="text" name="control1" value="1"/>
+      <input type="image" name="control2" src="image.1.jpg"/>
+      <input type="text" name="control3" value="3"/>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Listing 8.6</title>
+    <link rel="stylesheet" type="text/css" href="../common.css">
+    <script type="text/javascript"
+            src="../scripts/jquery-1.2.1.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#goodButton').click(function(){
+          $.get('reflectData.jsp');
+        });
+        $('#badButton').click(function(){
+          $.get('returnError.jsp');
+        });
+        $('#successDisplay').ajaxSuccess(function(info){
+          $(info.target)
+            .append('<div>Success at '+new Date()+'</div>');
+        });
+        $('#errorDisplay').ajaxError(function(info,xhr){
+          $(info.target)
+            .append('<div>Failed at '+new Date()+'</div>')
+            .append('<div>Status: ' + xhr.status + ' ' +
+                    xhr.statusText+'</div>');
+        });
+      });
+    </script>
+    <style>
+      fieldset {
+        width: 480px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <fieldset>
+      <legend>Initiate Ajax Requests</legend>
+      <div>
+        <button type="button" id="goodButton">
+          Initiate successful request
+        </button>
+        <button type="button" id="badButton">
+          Initiate failed request
+        </button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Success display</legend>
+      <div id="successDisplay"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Error display</legend>
+      <div id="errorDisplay"></div>
+    </fieldset>
+  </body>
+</html>
