@@ -1,0 +1,53 @@
+
+<!-- saved from url=(0043)http://www.civilized.com/files/lispinit.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><style type="text/css"></style><style id="clearly_highlighting_css" type="text/css">/* selection */ html.clearly_highlighting_enabled ::-moz-selection { background: rgba(246, 238, 150, 0.99); } html.clearly_highlighting_enabled ::selection { background: rgba(246, 238, 150, 0.99); } /* cursor */ html.clearly_highlighting_enabled {    /* cursor and hot-spot position -- requires a default cursor, after the URL one */    cursor: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--cursor.png") 14 16, text; } /* highlight tag */ em.clearly_highlight_element {    font-style: inherit !important; font-weight: inherit !important;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow.png");    background-repeat: repeat-x; background-position: top left; background-size: 100% 100%; } /* the delete-buttons are positioned relative to this */ em.clearly_highlight_element.clearly_highlight_first { position: relative; } /* delete buttons */ em.clearly_highlight_element a.clearly_highlight_delete_element {    display: none; cursor: pointer;    padding: 0; margin: 0; line-height: 0;    position: absolute; width: 34px; height: 34px; left: -17px; top: -17px;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite.png"); background-repeat: no-repeat; background-position: 0px 0px; } em.clearly_highlight_element a.clearly_highlight_delete_element:hover { background-position: -34px 0px; } /* retina */ @media (min--moz-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {    em.clearly_highlight_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow@2x.png"); }    em.clearly_highlight_element a.clearly_highlight_delete_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite@2x.png"); background-size: 68px 34px; } } </style><style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">/filename: 386 C:\lisp\lispinit              revision date: October 15, 1988
+
+(SETQ APPEND (LAMBDA (X Y) (COND ((EQ X NIL) Y)
+   ((ATOM X) (CONS X Y))
+   (T (CONS (CAR X) (APPEND (CDR X) Y)) )) ))
+
+(SETQ REVERSE (LAMBDA (X) (COND ((ATOM X) X)
+   (T (APPEND (REVERSE (CDR X)) (CONS (CAR X) NIL )))) ))
+
+(SETQ EQUAL (LAMBDA (X Y) (COND ((OR (ATOM X) (ATOM Y)) (EQ X Y))
+   ((EQUAL (CAR X) (CAR Y)) (EQUAL (CDR X) (CDR Y)))
+   (T NIL)) ))
+
+(SETQ NOT NULL)
+
+(SETQ MEMBER (LAMBDA (A S) (COND ((EQ S NIL) NIL) ((EQUAL A (CAR S)) T)
+(T (MEMBER A (CDR S))) )))
+
+(SETQ INTO (LAMBDA (G L) (COND ((NULL L) L) (T (CONS (G (CAR L))
+(INTO G (CDR L)))))))
+
+(SETQ ONTO (LAMBDA (G L) (COND ((NULL L) L) (T (CONS (G L)
+(ONTO G (CDR L)))))))
+
+(SETQ APPLY (SPECIAL ($G $X) (EVAL (CONS $G $X))))
+
+(SETQ SORT (LAMBDA (X)
+   (COND ((NULL X) X) (T (MERGE (CAR X) (SORT (CDR X)))))))
+
+(SETQ MERGE (LAMBDA (V L) (COND ((OR (NULL L) (LESSP V (CAR L))) (CONS V L))
+   (T (CONS (CAR L) (MERGE V (CDR L)))))))
+
+(SETQ GETPROP (LAMBDA (A P) (ASSOC (GETPLIST A) P)))
+
+(SETQ ASSOC (LAMBDA (L P) (COND ((NULL L) NIL)
+   (T (COND ((EQUAL P (CAR (CAR L))) (CDR (CAR L)))
+   (T (ASSOC (CDR L) P)))))))
+
+(SETQ PUTPROP (LAMBDA (A P W) (PUTPLIST A
+   (CONS (CONS P W) (GETPLIST (REMPROP A P W))))))
+
+(SETQ REMPROP (LAMBDA (A P W) (PUTPLIST A (NAX (GETPLIST A) (CONS P W)))))
+
+(SETQ NAX (LAMBDA (L P) (COND
+   ((NULL L) NIL) ((EQUAL (CAR L) P) (CDR L))
+   (T (DO (NX L P) L)))))
+
+(SETQ NX (LAMBDA (L P) (COND ((NULL (CDR L)) NIL)
+   ((EQUAL P (CAR (CDR L))) (RPLACD L (CDR L))))))
+
+</pre></body></html>
